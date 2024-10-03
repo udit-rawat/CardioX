@@ -1,18 +1,16 @@
-pandas
-mlflow
+pandas 
+mlflow==2.2.2
 notebook
 numpy
 scikit-learn
 matplotlib
-python-box
+python-box==6.0.2
 pyYAML
 tqdm
-ensure
+ensure==1.0.2
 joblib
-types-pyYAML
+types-PyYAML
 Flask
-Flask-CORS
-seaborn
-imblearn
+Flask-Cors
 shap
-
+-e .
