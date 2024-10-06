@@ -1,1 +1,22 @@
-var: variable
+COLUMNS:
+  HeartDisease: object
+  BMI: float64
+  Smoking: object
+  AlcoholDrinking: object
+  Stroke: object
+  PhysicalHealth: float64
+  MentalHealth: float64
+  DiffWalking: object
+  Sex: object
+  AgeCategory: object
+  Race: object
+  Diabetic: object
+  PhysicalActivity: object
+  GenHealth: object
+  SleepTime: float64
+  Asthma: object
+  KidneyDisease: object
+  SkinCancer: object
+
+TARGET_COLUMN:
+  name: HeartDisease
