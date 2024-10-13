@@ -23,7 +23,7 @@ class DataTransformationTrainingPipeline:
                 "Data transformation and splitting completed successfully.")
 
         except Exception as e:
-            logger.error(f"An error occurred during data transformation: {e}")
+            logger.exception("An error occurred during data transformation.")
             raise
 
 
