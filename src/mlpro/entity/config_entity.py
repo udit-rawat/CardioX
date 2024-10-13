@@ -22,3 +22,20 @@ class DataValidationConfig:
 class DataTransformationConfig:
     root_dir: Path
     data_path: Path
+
+
+@dataclass(frozen=True)
+class ModelTrainerConfig:
+    root_dir: Path
+    train_data_path: Path
+    test_data_path: Path
+    model_name: str
+    subsample: float
+    scale_pos_weight: float
+    n_estimators: int
+    min_child_weight: int
+    max_depth: int
+    learning_rate: float
+    gamma: float
+    colsample_bytree: float
+    target_column: str
