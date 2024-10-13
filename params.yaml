@@ -1,1 +1,9 @@
-var: variable
+xgboost_param:
+  subsample: 0.8
+  scale_pos_weight: 10.68
+  n_estimators: 100
+  min_child_weight: 5
+  max_depth: 3
+  learning_rate: 0.1
+  gamma: 0.1
+  colsample_bytree: 1.0
