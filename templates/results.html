@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Prediction Result</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+            rel="stylesheet">
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+            rel="stylesheet">
+        <style>
+        .dark {
+                    --bg-primary: #5c1a1b;   /* Dark red */
+                    --text-primary: #cdbebe; /* Soft pale red */
+                    --bg-secondary: #7f2d2e; /* Muted dark red */
+                    --text-secondary: #f2e5e5; /* Light rosy red */
+                }
+
+        .light {
+            --bg-primary: #f9e6e6;   /* Light red */
+            --text-primary: #6d2b2b; /* Deep red */
+            --bg-secondary: #f2cccc; /* Pale red */
+            --text-secondary: #843939; /* Medium red */
+        }
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .bg-secondary {
+            background-color: var(--bg-secondary);
+        }
+        .text-secondary {
+            color: var(--text-secondary);
+        }
+        .hero-section {
+            background-image: url('static/assets/img/heart_health.gif');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .hero-text {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        .lead {
+            font-size: 1.2rem;
+        }
+    </style>
+    </head>
+    <body class="transition-colors duration-300">
+        <!-- Navigation -->
+        <nav class="bg-secondary shadow">
+            <div
+                class="container mx-auto flex justify-between items-center p-4">
+                <a class="text-lg font-semibold" href="#">CardioX Prediction</a>
+                <div class="flex items-center space-x-4">
+                    <button id="themeToggle"
+                        class="text-secondary hover:text-primary transition-colors duration-300">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                    <ul class="flex space-x-4">
+                        <li>
+                            <a
+                                class="text-secondary hover:text-primary transition-colors duration-300"
+                                href="/">Home</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <header class="hero-section py-20">
+            <div class="container mx-auto text-center">
+                <h1 class="text-5xl font-bold hero-text">Prediction Result</h1>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="container mx-auto py-8">
+            <!-- Flexbox Container for Row Layout -->
+            <div class="flex flex-col md:flex-row justify-center gap-8">
+                <!-- Prediction Box -->
+                <div
+                    class="w-full md:w-1/2 bg-secondary shadow-md rounded p-5 hover:shadow-lg transition-shadow duration-300">
+                    <h2 class="text-2xl font-semibold mb-4">Prediction</h2>
+                    <p class="text-xl lead mb-4">Predicted Heart Disease Risk:
+                        <strong>{{ prediction }}</strong></p>
+                    <p class="text-sm text-secondary mb-4">Based on the
+                        following features:</p>
+                    <ul class="list-disc list-inside mb-4">
+                        <li>Stroke: {{ feature_values['Stroke'] }}</li>
+                        <li>Physical Health: {{ feature_values['PhysicalHealth']
+                            }}</li>
+                        <li>Mental Health: {{ feature_values['MentalHealth']
+                            }}</li>
+                        <li>Difficulty Walking: {{ feature_values['DiffWalking']
+                            }}</li>
+                        <li>Diabetic: {{ feature_values['Diabetic'] }}</li>
+                        <li>Kidney Disease: {{ feature_values['KidneyDisease']
+                            }}</li>
+                    </ul>
+                    <a href="/"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300">Go
+                        Back</a>
+                </div>
+                <!-- SHAP Explanation Box -->
+                <div
+                    class="w-full md:w-1/2 bg-secondary shadow-md rounded p-5 hover:shadow-lg transition-shadow duration-300">
+                    <h2
+                        class="text-xl font-semibold text-center mb-4">Prediction
+                        Explanation</h2>
+                    <div id="shap-visualization" class="text-center mb-4">
+                        <img src="/static/{{ shap_plot }}"
+                            alt="SHAP Explanation" class="mx-auto">
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-secondary mt-5 py-4">
+            <div class="container mx-auto text-center">
+                <p class="text-secondary">&copy; 2024 CardioX. All Rights
+                    Reserved.</p>
+            </div>
+        </footer>
+
+        <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            html.classList.toggle('light');
+            themeToggle.innerHTML = html.classList.contains('dark') 
+                ? '<i class="fas fa-sun"></i>' 
+                : '<i class="fas fa-moon"></i>';
+        });
+    </script>
+    </body>
+</html>

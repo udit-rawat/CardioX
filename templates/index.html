@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CardioX Prediction</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+            rel="stylesheet">
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+            rel="stylesheet">
+        <style>
+        .dark {
+            --bg-primary: #5c1a1b;   /* Dark red */
+            --text-primary: #cdbebe; /* Soft pale red */
+            --bg-secondary: #7f2d2e; /* Muted dark red */
+            --text-secondary: #f2e5e5; /* Light rosy red */
+        }
+
+        .light {
+            --bg-primary: #f9e6e6;   /* Light red */
+            --text-primary: #6d2b2b; /* Deep red */
+            --bg-secondary: #f2cccc; /* Pale red */
+            --text-secondary: #843939; /* Medium red */
+        }
+
+
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .bg-secondary {
+            background-color: var(--bg-secondary);
+        }
+        .text-secondary {
+            color: var(--text-secondary);
+        }
+    </style>
+    </head>
+    <body class="transition-colors duration-300">
+        <!-- Navigation -->
+        <nav class="bg-secondary shadow">
+            <div
+                class="container mx-auto flex justify-between items-center p-4">
+                <a class="text-lg font-semibold" href="#">CardioX Prediction</a>
+                <div class="flex items-center space-x-4">
+                    <button id="themeToggle"
+                        class="text-secondary hover:text-primary transition-colors duration-300">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                    <ul class="flex space-x-4">
+                        <li>
+                            <a
+                                class="text-secondary hover:text-primary transition-colors duration-300"
+                                href="/">Home</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Section -->
+        <header class="bg-secondary py-20">
+            <div class="container mx-auto text-center">
+                <h1 class="text-5xl font-bold">Predict Your Heart Health</h1>
+                <p class="text-lg text-secondary mt-4">Enter your details to
+                    check the risk of heart disease.</p>
+            </div>
+        </header>
+
+        <!-- Form Section -->
+        <main class="container mx-auto py-8">
+            <div class="flex justify-center">
+                <div class="w-full max-w-lg">
+                    <form action="/predict" method="POST"
+                        class="bg-secondary shadow-md rounded p-8">
+                        <div class="mb-4">
+                            <label for="stroke"
+                                class="block text-secondary font-bold mb-2">Stroke
+                                (0 or 1)</label>
+                            <input type="number" min="0" max="1" id="stroke"
+                                name="Stroke"
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-primary leading-tight focus:outline-none focus:shadow-outline hover:border-blue-500 transition-colors duration-300"
+                                required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="physical_health"
+                                class="block text-secondary font-bold mb-2">Physical
+                                Health (0-30 days)</label>
+                            <input type="number" id="physical_health"
+                                name="PhysicalHealth"
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-primary leading-tight focus:outline-none focus:shadow-outline hover:border-blue-500 transition-colors duration-300"
+                                required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="mental_health"
+                                class="block text-secondary font-bold mb-2">Mental
+                                Health (0-30 days)</label>
+                            <input type="number" id="mental_health"
+                                name="MentalHealth"
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-primary leading-tight focus:outline-none focus:shadow-outline hover:border-blue-500 transition-colors duration-300"
+                                required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="diff_walking"
+                                class="block text-secondary font-bold mb-2">Difficulty
+                                Walking (0 or 1)</label>
+                            <input type="number" min="0" max="1"
+                                id="diff_walking" name="DiffWalking"
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-primary leading-tight focus:outline-none focus:shadow-outline hover:border-blue-500 transition-colors duration-300"
+                                required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="diabetic"
+                                class="block text-secondary font-bold mb-2">Diabetic
+                                (0 or 1)</label>
+                            <input type="number" min="0" max="1" id="diabetic"
+                                name="Diabetic"
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-primary leading-tight focus:outline-none focus:shadow-outline hover:border-blue-500 transition-colors duration-300"
+                                required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="kidney_disease"
+                                class="block text-secondary font-bold mb-2">Kidney
+                                Disease (0 or 1)</label>
+                            <input type="number" min="0" max="1"
+                                id="kidney_disease" name="KidneyDisease"
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-primary leading-tight focus:outline-none focus:shadow-outline hover:border-blue-500 transition-colors duration-300"
+                                required>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <button
+                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition-colors duration-300"
+                                type="submit">
+                                Predict
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-secondary mt-5 py-4">
+            <div class="container mx-auto">
+                <div class="text-center">
+                    <p class="text-secondary">&copy; 2024 CardioX. All rights
+                        reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            html.classList.toggle('light');
+            themeToggle.innerHTML = html.classList.contains('dark') 
+                ? '<i class="fas fa-sun"></i>' 
+                : '<i class="fas fa-moon"></i>';
+        });
+    </script>
+    </body>
+</html>
